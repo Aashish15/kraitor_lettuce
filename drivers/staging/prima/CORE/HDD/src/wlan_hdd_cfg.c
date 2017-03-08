@@ -4299,12 +4299,9 @@ static void print_hdd_cfg(hdd_context_t *pHddCtx)
           "Name = [gPERRoamUpThresholdRate] Value = [%u] ",
           pHddCtx->cfg_ini->rateUpThreshold);
 #endif
-<<<<<<< HEAD
-=======
   VOS_TRACE(VOS_MODULE_ID_HDD, VOS_TRACE_LEVEL_INFO_HIGH,
         "Name = [gEnableSapInternalRestart] Value = [%u] ",
          pHddCtx->cfg_ini->sap_internal_restart);
->>>>>>> aa94bc0... staging: prima: Update to LA.BR.1.2.9_rb1.12
 }
 
 
