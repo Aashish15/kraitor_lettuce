@@ -2210,9 +2210,8 @@ static tANI_S32 csrFindCongestionScore (tpAniSirGlobal pMac, tCsrScanResult *pBs
 
     if (bssInfo->rssi < PER_BAD_RSSI) {
         smsLog(pMac, LOG1,
-               FL("discarding candidate due to low rssi=%d than %d, bssid "
+               FL("discrarding candidate due to low rssi=%d bssid "
                MAC_ADDRESS_STR), bssInfo->rssi,
-               pMac->roam.configParam.PERMinRssiThresholdForRoam,
                MAC_ADDR_ARRAY(pBss->Result.BssDescriptor.bssId));
         return 0;
     }
@@ -2700,14 +2699,6 @@ eHalStatus csrScanGetResult(tpAniSirGlobal pMac, tCsrScanResultFilter *pFilter, 
                     while(pTmpEntry)
                     {
                         pTmpResult = GET_BASE_ADDR( pTmpEntry, tCsrScanResult, Link );
-                        /* Skip the bssid hint AP, as it should be on head */
-                        if (pFilter && vos_mem_compare(
-                           pTmpResult->Result.BssDescriptor.bssId,
-                           pFilter->bssid_hint, VOS_MAC_ADDR_SIZE)) {
-                           pTmpEntry = csrLLNext(&pRetList->List,
-                                                  pTmpEntry, LL_ACCESS_NOLOCK);
-                           continue;
-                        }
 #ifdef WLAN_FEATURE_ROAM_SCAN_OFFLOAD
                         if (pFilter && pFilter->isPERRoamScan) {
                             csrFindCongestionScore(pMac, pResult);
